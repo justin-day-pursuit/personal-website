@@ -1,0 +1,221 @@
+/*
+  ============================================
+  GLOBAL STYLE NOTES (FOR MAINTENANCE)
+  ============================================
+  This file controls visual presentation only.
+  If you need to change wording/content, edit index.html.
+
+  Quick edit guide:
+  - Change colors in :root variables
+  - Change font in body
+  - Change section spacing in section selectors
+*/
+
+/* Color and spacing variables for easy future updates */
+:root {
+  --bg-main: #f7f9fc;
+  --bg-card: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --accent: #1d4ed8;
+  --border-soft: #dbe5f2;
+  --shadow-soft: 0 10px 24px rgba(17, 24, 39, 0.08);
+  --radius: 16px;
+  --content-width: 980px;
+}
+
+/* Reset default browser spacing to keep layout predictable */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Smooth behavior for all scroll actions */
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.7;
+}
+
+/* Reusable width wrapper */
+.container {
+  width: min(100% - 2rem, var(--content-width));
+  margin-inline: auto;
+}
+
+/* Header area with subtle gradient for modern look */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  backdrop-filter: blur(6px);
+}
+
+.header-layout {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.25rem 0 1.1rem;
+}
+
+.eyebrow {
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  margin-bottom: 0.35rem;
+}
+
+h1 {
+  font-size: clamp(1.7rem, 3.4vw, 2.35rem);
+  line-height: 1.2;
+  margin-bottom: 0.35rem;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.headline {
+  color: var(--text-muted);
+  max-width: 75ch;
+}
+
+/* Navigation tabs */
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.nav-tab {
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  color: var(--text-main);
+  border-radius: 999px;
+  padding: 0.52rem 0.92rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-tab:hover,
+.nav-tab:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  outline: none;
+}
+
+/* Main section spacing */
+main {
+  padding: 1.6rem 0 2.8rem;
+}
+
+.intro-section,
+.story-section,
+.conclusion-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1.25rem;
+}
+
+.intro-section {
+  padding: 1.3rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.photo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.photo-wrapper img {
+  width: min(100%, 320px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+}
+
+.intro-copy h2,
+.story-section h2,
+.conclusion-section h2,
+.site-footer h2 {
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  line-height: 1.3;
+  margin-bottom: 0.65rem;
+}
+
+.intro-copy p + p,
+.story-section p + p,
+.conclusion-section p + p {
+  margin-top: 0.85rem;
+}
+
+.story-section,
+.conclusion-section {
+  padding: 1.45rem 1.3rem;
+}
+
+/* Footer with strong but calm contrast */
+.site-footer {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 2rem 0 2.4rem;
+}
+
+.footer-layout {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.05rem;
+}
+
+.contact-list a {
+  color: #c7d2fe;
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-list a:hover,
+.contact-list a:focus-visible {
+  color: #ffffff;
+  border-color: #ffffff;
+  outline: none;
+}
+
+/* Desktop enhancements */
+@media (min-width: 760px) {
+  .header-layout {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+
+  .intro-section {
+    grid-template-columns: 320px 1fr;
+    align-items: start;
+    padding: 1.5rem;
+  }
+
+  .story-section,
+  .conclusion-section {
+    padding: 1.7rem 1.6rem;
+  }
+}
