@@ -49,20 +49,26 @@ body {
   margin-inline: auto;
 }
 
-/* Header area with subtle gradient for modern look */
+/* Static header area with subtle gradient for modern look */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  border-bottom: 1px solid var(--border-soft);
   background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
-  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .header-layout {
   display: grid;
-  gap: 1.25rem;
-  padding: 1.25rem 0 1.1rem;
+  gap: 0.75rem;
+  padding: 1.25rem 0 1.15rem;
+}
+
+/* Sticky nav bar anchored to top of viewport */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--border-soft);
+  background: #ffffff;
+  backdrop-filter: blur(6px);
 }
 
 .eyebrow {
@@ -93,6 +99,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.65rem;
+  padding: 0.8rem 0;
 }
 
 .nav-tab {
@@ -163,6 +170,35 @@ main {
   margin-top: 0.85rem;
 }
 
+/* Subheadings, links, and bullet lists inside story chapters */
+.story-section h3 {
+  font-size: 1.05rem;
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+}
+
+.story-section a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.story-section a:hover,
+.story-section a:focus-visible {
+  border-bottom-color: var(--accent);
+  outline: none;
+}
+
+.story-section ul {
+  margin-top: 0.45rem;
+  margin-bottom: 0.85rem;
+  margin-left: 1.2rem;
+}
+
+.story-section li + li {
+  margin-top: 0.25rem;
+}
+
 .story-section,
 .conclusion-section {
   padding: 1.45rem 1.3rem;
@@ -201,11 +237,44 @@ main {
   outline: none;
 }
 
+/* Floating "to top" square button */
+.to-top-button {
+  position: fixed !important;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 9999;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.44);
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.24);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.to-top-button:hover,
+.to-top-button:focus-visible {
+  background: rgba(29, 78, 216, 0.95);
+  transform: translateY(-1px);
+  outline: none;
+}
+
 /* Desktop enhancements */
 @media (min-width: 760px) {
   .header-layout {
-    grid-template-columns: 1fr auto;
-    align-items: end;
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
   .intro-section {

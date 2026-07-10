@@ -7,44 +7,54 @@
     -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resume Story | [Your Name]</title>
+    <title>Justin's Story</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <!--
       SITE HEADER
-      - Contains your intro line and navigation.
-      - The navigation buttons are wired in script.js for smooth scrolling.
+      - Contains intro line only (static in normal page flow).
     -->
     <header class="site-header">
       <div class="container header-layout">
         <div class="header-text">
           <!-- REPLACE [Your Name] with your real full name -->
           <p class="eyebrow">Nice to meet you</p>
-          <h1>I am <span class="accent">[Your Name]</span>.</h1>
+          <h1>I'm <span class="accent">Justin Day</span>.</h1>
           <p class="headline">
             AI builder taught by Pursuit, software engineer with a B.S. in
             Computer Science, and currently pursuing an M.S. in Software
             Engineering.
           </p>
         </div>
-        <nav class="main-nav" aria-label="Profile section navigation">
-          <!--
-            Add or rename tabs by changing button text + data-target id.
-            data-target must match the id of the section you want to scroll to.
-          -->
-          <button class="nav-tab" data-target="creative-solving" type="button">
-            Creative Problem Solving
-          </button>
-          <button class="nav-tab" data-target="communication" type="button">
-            Communication
-          </button>
-          <button class="nav-tab" data-target="fast-learning" type="button">
-            Fast Learning
-          </button>
-        </nav>
       </div>
     </header>
+
+    <!--
+      STICKY NAVIGATION BAR
+      - Remains anchored at top while user scrolls.
+      - Buttons are wired in script.js for smooth scrolling.
+    -->
+    <div class="sticky-nav">
+      <nav class="main-nav container" aria-label="Profile section navigation">
+        <!--
+          Add or rename tabs by changing button text + data-target id.
+          data-target must match the id of the section you want to scroll to.
+        -->
+        <button class="nav-tab" data-target="creative-problem-solver" type="button">
+          Creative Problem Solver
+        </button>
+        <button class="nav-tab" data-target="effective-communicator" type="button">
+          Effective Communicator
+        </button>
+        <button class="nav-tab" data-target="fast-learner" type="button">
+          Fast Learner
+        </button>
+        <button class="nav-tab" data-target="resume-projects" type="button">
+          Resume & Projects
+        </button>
+      </nav>
+    </div>
 
     <!--
       MAIN CONTENT
@@ -61,8 +71,8 @@
             3) Update alt text so screen readers describe the image correctly
           -->
           <img
-            src="https://via.placeholder.com/320x320.png?text=Your+Photo"
-            alt="Portrait of [Your Name]"
+            src="profilePic.jpeg"
+            alt="That's Me!"
           />
         </div>
         <div class="intro-copy">
@@ -83,7 +93,7 @@
         </div>
       </section>
 
-      <section id="creative-solving" class="story-section container">
+      <section id="creative-problem-solver" class="story-section container">
         <h2>My Strongest Quality: Creative Problem Solving</h2>
         <p>
           Creative problem solving is where I bring the most value. I approach
@@ -101,7 +111,7 @@
         </p>
       </section>
 
-      <section id="communication" class="story-section container">
+      <section id="effective-communicator" class="story-section container">
         <h2>Communication That Builds Trust</h2>
         <p>
           I am an effective communicator because I have spent years translating
@@ -118,7 +128,7 @@
         </p>
       </section>
 
-      <section id="fast-learning" class="story-section container">
+      <section id="fast-learner" class="story-section container">
         <h2>Fast Learning with Follow-Through</h2>
         <p>
           I learn quickly, especially under pressure. In my cryptography course,
@@ -131,6 +141,58 @@
           mastery. That same approach carries into software work whenever I need
           to adopt new tools, frameworks, or domains on a tight timeline.
         </p>
+      </section>
+
+      <section id="resume-projects" class="story-section container">
+        <h2>Resume and Projects</h2>
+        <p>
+          This section is a quick look at the work behind my story. You can open
+          my resume and explore a few projects that reflect how I think, build,
+          and deliver practical solutions.
+        </p>
+        <p>
+          <!--
+            REPLACE resume PDF link:
+            - Update href to your actual resume PDF URL (or file path if hosted)
+            - target="_blank" opens in a new browser tab and PDF viewer
+          -->
+          <a
+            href="https://example.com/your-resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            >View My Resume (PDF)</a
+          >
+        </p>
+
+        <h3>Project 1: [Project Name Placeholder]</h3>
+        <p>
+          <!-- REPLACE with your real project URL -->
+          <a
+            href="https://example.com/project-one"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open Project 1</a
+          >
+        </p>
+        <ul>
+          <li>Built to solve [specific problem placeholder] for [target users].</li>
+          <li>Focused on clean architecture, usability, and measurable outcomes.</li>
+        </ul>
+
+        <h3>Project 2: [Project Name Placeholder]</h3>
+        <p>
+          <!-- REPLACE with your real project URL -->
+          <a
+            href="https://example.com/project-two"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open Project 2</a
+          >
+        </p>
+        <ul>
+          <li>Designed and implemented [feature placeholder] end to end.</li>
+          <li>Demonstrates adaptability, quick learning, and practical execution.</li>
+        </ul>
       </section>
 
       <section class="conclusion-section container">
@@ -159,31 +221,47 @@
         <ul class="contact-list">
           <li>
             <!-- REPLACE placeholder email address -->
-            <a href="mailto:your.email@example.com" target="_blank" rel="noopener noreferrer"
-              >your.email@example.com</a
+            <a href="mailto:justin.day@pursuit.org" target="_blank" rel="noopener noreferrer"
+              >justin.day@pursuit.org</a
             >
           </li>
           <li>
             <!-- REPLACE placeholder phone number -->
-            <a href="tel:+10000000000" target="_blank" rel="noopener noreferrer"
-              >+1 (000) 000-0000</a
+            <a href="tel:+19297201125" target="_blank" rel="noopener noreferrer"
+              >+1 (929) 720-1125</a
             >
           </li>
           <li>
             <!-- REPLACE with your LinkedIn URL -->
-            <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.linkedin.com/in/justin-day-192605164/" target="_blank" rel="noopener noreferrer"
               >LinkedIn</a
             >
           </li>
           <li>
             <!-- REPLACE with your GitHub URL -->
-            <a href="https://github.com/your-handle" target="_blank" rel="noopener noreferrer"
+            <a href="https://github.com/justin-day-pursuit" target="_blank" rel="noopener noreferrer"
               >GitHub</a
             >
           </li>
         </ul>
       </div>
     </footer>
+
+    <!--
+      FLOATING "TO TOP" BUTTON
+      - Small square button anchored at bottom-right of viewport.
+      - title="To top" provides native tooltip text on hover.
+      - JavaScript in script.js handles the click-to-top behavior.
+    -->
+    <button
+      id="to-top-button"
+      class="to-top-button"
+      type="button"
+      title="To top"
+      aria-label="To top"
+    >
+      ↑
+    </button>
 
     <!-- Keep JavaScript at the end so HTML loads first -->
     <script src="script.js"></script>
