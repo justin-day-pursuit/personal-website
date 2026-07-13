@@ -19,7 +19,8 @@
   --text-muted: #4b5563;
   --accent: #1d4ed8;
   --border-soft: #dbe5f2;
-  --shadow-soft: 0 10px 24px rgba(17, 24, 39, 0.08);
+  /* Bottom-right-only shadow to mimic top-left light source */
+  --shadow-card-pop: 9px 9px 0 rgba(30, 64, 175, 0.32);
   --radius: 16px;
   --content-width: 980px;
 }
@@ -51,7 +52,7 @@ body {
 
 /* Static header area with subtle gradient for modern look */
 .site-header {
-  background: linear-gradient(180deg, #ffffff 0%, #f9fbff 100%);
+  background: #dbeafe;
   border-bottom: 1px solid var(--border-soft);
 }
 
@@ -67,12 +68,12 @@ body {
   top: 0;
   z-index: 20;
   border-bottom: 1px solid var(--border-soft);
-  background: #ffffff;
+  background: #26619c;
   backdrop-filter: blur(6px);
 }
 
 .eyebrow {
-  color: var(--text-muted);
+  color: #000000;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-size: 0.78rem;
@@ -90,7 +91,7 @@ h1 {
 }
 
 .headline {
-  color: var(--text-muted);
+  color: #000000;
   max-width: 75ch;
 }
 
@@ -132,7 +133,7 @@ main {
   background: var(--bg-card);
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-card-pop);
   margin-bottom: 1.25rem;
 }
 
@@ -278,7 +279,7 @@ main {
   }
 
   .intro-section {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 1fr 320px;
     align-items: start;
     padding: 1.5rem;
   }
