@@ -16,6 +16,7 @@
 
 // Collect every tab button that should trigger scrolling.
 const navTabs = document.querySelectorAll(".nav-tab");
+const stickyNav = document.querySelector(".sticky-nav");
 const toTopButton = document.getElementById("to-top-button");
 
 /**
@@ -54,6 +55,22 @@ navTabs.forEach((tab) => {
     scrollToSection(sectionId);
   });
 });
+
+/*
+  Sticky-nav visual state:
+  - Keep nav transparent before it reaches the viewport top
+  - Add background/border once it is actually stuck to top
+*/
+if (stickyNav) {
+  function updateStickyNavState() {
+    const isStuck = stickyNav.getBoundingClientRect().top <= 0;
+    stickyNav.classList.toggle("is-stuck", isStuck);
+  }
+
+  updateStickyNavState();
+  window.addEventListener("scroll", updateStickyNavState, { passive: true });
+  window.addEventListener("resize", updateStickyNavState);
+}
 
 /*
   Floating "to top" button behavior:
