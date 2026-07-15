@@ -70,7 +70,8 @@ body {
   z-index: 40;
   border-bottom: 1px solid transparent;
   background: transparent;
-  backdrop-filter: blur(8px);
+  isolation: isolate;
+  overflow: visible;
   transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -107,11 +108,12 @@ h1 {
 
 /* Navigation tabs */
 .main-nav {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 1rem;
-  padding: 0.72rem 0;
+  column-gap: 1rem;
+  min-height: 4rem;
+  padding: 0.85rem 0;
   overflow: visible;
 }
 
@@ -128,20 +130,26 @@ h1 {
 
 .nav-links {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
   gap: 0.55rem;
+  position: relative;
+  z-index: 2;
 }
 
 .nav-tab {
   position: relative;
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.3rem;
   border: 1px solid var(--border-soft);
   background: rgba(255, 255, 255, 0.9);
   color: var(--text-main);
   border-radius: 999px;
-  padding: 0.44rem 0.86rem;
+  padding: 0.5rem 0.9rem;
   font-size: 0.84rem;
   font-weight: 600;
   white-space: nowrap;
@@ -323,10 +331,12 @@ main {
 /* Desktop enhancements */
 @media (min-width: 760px) {
   .main-nav {
-    flex-wrap: nowrap;
+    grid-template-columns: auto 1fr;
+    min-height: 4.15rem;
   }
 
   .nav-links {
+    flex-wrap: nowrap;
     gap: 0.6rem;
   }
 
