@@ -34,7 +34,7 @@ function getHeaderHeight() {
  */
 function scrollToSection(sectionId) {
   const targetSection = document.getElementById(sectionId);
-  if (!targetSection) return; // Safety check: do nothing if section does not exist.
+  if (!targetSection) return false; // Safety check: do nothing if section does not exist.
 
   // targetPosition = section top position in full page coordinates.
   const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY;
@@ -42,10 +42,15 @@ function scrollToSection(sectionId) {
   // Offset keeps heading visible below sticky nav.
   const offsetPosition = targetPosition - getHeaderHeight() - 14;
 
+  // Clamp to valid page range so near-bottom sections always scroll correctly.
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const clampedPosition = Math.min(Math.max(offsetPosition, 0), Math.max(maxScroll, 0));
+
   window.scrollTo({
-    top: offsetPosition,
+    top: clampedPosition,
     behavior: "smooth"
   });
+  return true;
 }
 
 // Attach click behavior to each navigation tab.
