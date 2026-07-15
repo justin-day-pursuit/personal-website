@@ -197,17 +197,18 @@ main {
 .intro-section,
 .story-section,
 .contact-section {
-  background: var(--bg-card);
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card-pop);
-  margin-bottom: 1.1rem;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 0;
 }
 
 .intro-section {
-  padding: 1.3rem;
+  padding: 1.6rem 0 1.4rem;
   display: grid;
   gap: 1.25rem;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
 }
 
 .photo-wrapper {
@@ -271,7 +272,12 @@ main {
 
 .story-section,
 .contact-section {
-  padding: 1.45rem 1.3rem;
+  padding: 1.7rem 0 1.55rem;
+  border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+}
+
+.contact-section {
+  border-bottom: none;
 }
 
 /* Footer with strong but calm contrast */
@@ -408,11 +414,11 @@ main {
   .intro-section {
     grid-template-columns: 1fr 320px;
     align-items: start;
-    padding: 1.5rem;
+    padding: 1.8rem 0 1.5rem;
   }
 
   .story-section,
   .contact-section {
-    padding: 1.7rem 1.6rem;
+    padding: 1.9rem 0 1.7rem;
   }
 }
