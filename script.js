@@ -148,6 +148,25 @@ if (themeToggleInput) {
   - Uses a form endpoint that forwards to the recipient inbox
 */
 if (contactForm) {
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+
+  function areRequiredFieldsFilled() {
+    const requiredFields = contactForm.querySelectorAll("[required]");
+    return Array.from(requiredFields).every((field) => {
+      const value = typeof field.value === "string" ? field.value.trim() : "";
+      return value.length > 0 && field.checkValidity();
+    });
+  }
+
+  function updateSubmitEnabledState() {
+    if (!submitButton) return;
+    submitButton.disabled = !areRequiredFieldsFilled();
+  }
+
+  contactForm.addEventListener("input", updateSubmitEnabledState);
+  contactForm.addEventListener("change", updateSubmitEnabledState);
+  updateSubmitEnabledState();
+
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -161,8 +180,6 @@ if (contactForm) {
     const returnEmail = returnEmailInput ? returnEmailInput.value.trim() : "";
     const subject = subjectInput ? subjectInput.value.trim() : "";
     const inquiry = messageInput ? messageInput.value.trim() : "";
-    const submitButton = contactForm.querySelector('button[type="submit"]');
-
     if (contactFormStatus) {
       contactFormStatus.textContent = "Sending...";
     }
@@ -196,6 +213,7 @@ if (contactForm) {
       }
 
       contactForm.reset();
+      updateSubmitEnabledState();
       if (contactFormStatus) {
         contactFormStatus.textContent = "Message sent. Thank you for reaching out.";
       }

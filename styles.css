@@ -472,6 +472,12 @@ main {
   outline: none;
 }
 
+.connect-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .contact-form-status {
   min-height: 1.25rem;
   font-size: 0.92rem;
@@ -659,6 +665,10 @@ body.theme-dark .connect-button {
 body.theme-dark .connect-button:hover,
 body.theme-dark .connect-button:focus-visible {
   background: rgba(125, 211, 252, 0.26);
+}
+
+body.theme-dark .connect-button:disabled {
+  opacity: 0.5;
 }
 
 body.theme-dark .contact-form-status {
