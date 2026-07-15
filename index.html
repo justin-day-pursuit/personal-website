@@ -247,6 +247,66 @@
           You can reach me through the contact information below. I look forward
           to connecting.
         </p>
+        <form
+          id="contact-form"
+          class="contact-form"
+          autocomplete="off"
+          novalidate
+          data-recipient="justin.day@pursuit.org"
+        >
+          <!--
+            REPLACE data-recipient above with your preferred inbox if needed.
+            Browser autofill is intentionally disabled on all fields below.
+          -->
+          <div class="form-field">
+            <label for="contact-return-email">Your Email</label>
+            <input
+              id="contact-return-email"
+              name="contact_return_email"
+              type="email"
+              required
+              autocomplete="off"
+              autocapitalize="off"
+              autocorrect="off"
+              spellcheck="false"
+              inputmode="email"
+              placeholder="name@example.com"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-subject">Subject</label>
+            <input
+              id="contact-subject"
+              name="contact_subject"
+              type="text"
+              required
+              autocomplete="off"
+              autocapitalize="sentences"
+              autocorrect="off"
+              spellcheck="false"
+              placeholder="How can we collaborate?"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">Inquiry</label>
+            <textarea
+              id="contact-message"
+              name="contact_message"
+              rows="6"
+              required
+              autocomplete="off"
+              autocapitalize="sentences"
+              autocorrect="off"
+              spellcheck="false"
+              placeholder="Share details about the opportunity..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="connect-button">Let's Connect</button>
+          <p id="contact-form-status" class="contact-form-status" role="status" aria-live="polite"></p>
+        </form>
       </section>
     </main>
 

@@ -19,6 +19,8 @@ const navTabs = document.querySelectorAll(".nav-tab");
 const stickyNav = document.querySelector(".sticky-nav");
 const toTopButton = document.getElementById("to-top-button");
 const themeToggleInput = document.getElementById("theme-toggle-input");
+const contactForm = document.getElementById("contact-form");
+const contactFormStatus = document.getElementById("contact-form-status");
 const THEME_STORAGE_KEY = "resume-site-theme";
 
 /**
@@ -137,6 +139,76 @@ if (themeToggleInput) {
     const nextTheme = themeToggleInput.checked ? "dark" : "light";
     applyTheme(nextTheme);
     localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+  });
+}
+
+/*
+  Contact form behavior:
+  - Sends form data directly via fetch (no external mail app)
+  - Uses a form endpoint that forwards to the recipient inbox
+*/
+if (contactForm) {
+  contactForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!contactForm.reportValidity()) return;
+
+    const recipient = contactForm.dataset.recipient || "";
+    const returnEmailInput = document.getElementById("contact-return-email");
+    const subjectInput = document.getElementById("contact-subject");
+    const messageInput = document.getElementById("contact-message");
+
+    const returnEmail = returnEmailInput ? returnEmailInput.value.trim() : "";
+    const subject = subjectInput ? subjectInput.value.trim() : "";
+    const inquiry = messageInput ? messageInput.value.trim() : "";
+    const submitButton = contactForm.querySelector('button[type="submit"]');
+
+    if (contactFormStatus) {
+      contactFormStatus.textContent = "Sending...";
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
+
+    try {
+      const payload = new FormData();
+      payload.append("Return Email", returnEmail);
+      payload.append("Subject", subject);
+      payload.append("Inquiry", inquiry);
+      payload.append("_subject", `Portfolio inquiry: ${subject}`);
+      payload.append("_replyto", returnEmail);
+      payload.append("_captcha", "false");
+
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json"
+          },
+          body: payload
+        }
+      );
+
+      const result = await response.json();
+      if (!response.ok || result.success !== "true") {
+        throw new Error("Email submission failed");
+      }
+
+      contactForm.reset();
+      if (contactFormStatus) {
+        contactFormStatus.textContent = "Message sent. Thank you for reaching out.";
+      }
+    } catch (error) {
+      if (contactFormStatus) {
+        contactFormStatus.textContent =
+          "Unable to send right now. Please try again shortly.";
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
+    }
   });
 }
 
