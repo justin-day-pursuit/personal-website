@@ -17,17 +17,17 @@
 :root {
   --font-display: "Space Grotesk", "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
   --font-body: "Inter", "IBM Plex Sans", sans-serif;
-  --bg-main: #f3f6fb;
+  --bg-main: #f5f5f4;
   --bg-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #334155;
-  --accent: #2563eb;
-  --border-soft: #d0def0;
-  --nav-dark: #1e293b;
+  --text-main: #111827;
+  --text-muted: #374151;
+  --accent: #60a5fa;
+  --border-soft: #e5e7eb;
+  --nav-dark: #111827;
   --radius: 18px;
   --content-width: 1040px;
-  /* Bottom-right dark-blue directional shadow (top-left light source) */
-  --shadow-card-pop: 8px 10px 26px rgba(30, 64, 175, 0.18);
+  /* Subtle neutral shadow that keeps focus on content */
+  --shadow-card-pop: 0 10px 28px rgba(17, 24, 39, 0.08);
 }
 
 /* Reset default browser spacing to keep layout predictable */
@@ -57,8 +57,8 @@ body {
 
 /* Static header area with subtle gradient for modern look */
 .site-header {
-  background: linear-gradient(180deg, #e9f2ff 0%, #f5f9ff 100%);
-  border-bottom: 1px solid #c6d9f5;
+  background: #fafaf9;
+  border-bottom: 1px solid var(--border-soft);
 }
 
 .header-layout {
@@ -81,13 +81,13 @@ body {
 
 /* Applied by JavaScript only when nav is stuck to top */
 .sticky-nav.is-stuck {
-  border-bottom-color: #24364c;
-  background: rgba(20, 31, 49, 0.95);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.24);
+  border-bottom-color: #d1d5db;
+  background: #e5e7eb;
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.12);
 }
 
 .eyebrow {
-  color: #1e3a8a;
+  color: var(--text-muted);
   letter-spacing: 0.05em;
   text-transform: uppercase;
   font-size: 0.76rem;
@@ -124,14 +124,18 @@ h1 {
 
 .nav-name {
   font-family: var(--font-display);
-  font-size: 1.02rem;
+  font-size: clamp(1.55rem, 3.2vw, 2.2rem);
   font-weight: 700;
-  color: #0b1a2f;
+  color: #111827;
+  line-height: 1;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
   white-space: nowrap;
 }
 
 .sticky-nav.is-stuck .nav-name {
-  color: #e2e8f0;
+  color: #111827;
 }
 
 .nav-links {
@@ -165,24 +169,24 @@ h1 {
 }
 
 .sticky-nav.is-stuck .nav-tab {
-  background: rgba(241, 245, 249, 0.12);
-  color: #e2e8f0;
-  border-color: rgba(191, 219, 254, 0.42);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-main);
+  border-color: var(--border-soft);
 }
 
 .nav-tab:hover,
 .nav-tab:focus-visible {
   border-color: var(--accent);
-  color: #1d4ed8;
+  color: #2563eb;
   outline: none;
   transform: translateY(-1px);
 }
 
 .sticky-nav.is-stuck .nav-tab:hover,
 .sticky-nav.is-stuck .nav-tab:focus-visible {
-  color: #ffffff;
-  border-color: #93c5fd;
-  background: rgba(147, 197, 253, 0.22);
+  color: #2563eb;
+  border-color: #60a5fa;
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* Main section spacing */
@@ -272,8 +276,8 @@ main {
 
 /* Footer with strong but calm contrast */
 .site-footer {
-  background: #0f172a;
-  color: #e2e8f0;
+  background: #e5e7eb;
+  color: #111827;
   padding: 2rem 0 2.4rem;
 }
 
@@ -290,7 +294,7 @@ main {
 }
 
 .contact-list a {
-  color: #c7d2fe;
+  color: #2563eb;
   text-decoration: none;
   border-bottom: 1px dashed transparent;
   transition: border-color 0.2s ease, color 0.2s ease;
@@ -298,8 +302,8 @@ main {
 
 .contact-list a:hover,
 .contact-list a:focus-visible {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: #1d4ed8;
+  border-color: #1d4ed8;
   outline: none;
 }
 
