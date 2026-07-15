@@ -12,6 +12,40 @@
   </head>
   <body>
     <!--
+      STICKY NAVIGATION BAR
+      - Stays at top of page and uses JS for smooth section scrolling.
+      - Name is left-aligned; section buttons are right-aligned.
+    -->
+    <div class="sticky-nav">
+      <nav class="main-nav container" aria-label="Profile section navigation">
+        <!--
+          REPLACE name text below with your preferred display name.
+        -->
+        <p class="nav-name">Justin Day</p>
+        <div class="nav-links">
+          <button class="nav-tab" data-target="about" type="button">
+            About
+          </button>
+          <button class="nav-tab" data-target="creative-problem-solver" type="button">
+            Problem Solver
+          </button>
+          <button class="nav-tab" data-target="effective-communicator" type="button">
+            Communicator
+          </button>
+          <button class="nav-tab" data-target="fast-learner" type="button">
+            Learner
+          </button>
+          <button class="nav-tab" data-target="resume-projects" type="button">
+            Projects
+          </button>
+          <button class="nav-tab" data-target="contact" type="button">
+            Contact
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!--
       SITE HEADER
       - Contains intro line only (static in normal page flow).
     -->
@@ -19,10 +53,9 @@
       <div class="container header-layout">
         <div class="header-text">
           <!-- REPLACE [Your Name] with your real full name -->
-          <p class="eyebrow">Nice to meet you</p>
-          <h1>I'm <span class="accent">Justin Day</span>.</h1>
+          <h1>Software Engineer & AI Builder, using AI-powered tools to create custom and efficient solutions.</h1>
           <p class="headline">
-            I'm a software  builder, using AI-powered tools to create custom and efficient solutions.
+            Bachelors in Computer Science, with passion for building solutions that make a difference. Currently purusing a Masters in Software Engineering at Arizona State University.
           </p>
         </div>
       </div>
@@ -34,7 +67,7 @@
       - Starts with photo/introduction, then qualities, then conclusion.
     -->
     <main>
-      <section class="intro-section container">
+      <section id="about" class="intro-section container">
         <div class="intro-copy">
           <h2>Introduction</h2>
           <p>
@@ -64,33 +97,6 @@
           />
         </div>
       </section>
-
-      <!--
-        STICKY NAVIGATION BAR
-        - Sits under the introduction section.
-        - Remains anchored at top while user scrolls further down.
-        - Buttons are wired in script.js for smooth scrolling.
-      -->
-      <div class="sticky-nav">
-        <nav class="main-nav container" aria-label="Profile section navigation">
-          <!--
-            Add or rename tabs by changing button text + data-target id.
-            data-target must match the id of the section you want to scroll to.
-          -->
-          <button class="nav-tab" data-target="creative-problem-solver" type="button">
-            Creative Problem Solver
-          </button>
-          <button class="nav-tab" data-target="effective-communicator" type="button">
-            Effective Communicator
-          </button>
-          <button class="nav-tab" data-target="fast-learner" type="button">
-            Fast Learner
-          </button>
-          <button class="nav-tab" data-target="resume-projects" type="button">
-            Resume & Projects
-          </button>
-        </nav>
-      </div>
 
       <section id="creative-problem-solver" class="story-section container">
         <h2>My Strongest Quality: Creative Problem Solving</h2>
@@ -194,8 +200,8 @@
         </ul>
       </section>
 
-      <section class="conclusion-section container">
-        <h2>Let’s Build Something Valuable</h2>
+      <section id="contact" class="contact-section container">
+        <h2>Contact</h2>
         <p>
           I am a driven, coachable engineer who combines technical skill with
           strong collaboration and real-world adaptability. If your team values

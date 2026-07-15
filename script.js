@@ -58,12 +58,12 @@ navTabs.forEach((tab) => {
 
 /*
   Sticky-nav visual state:
-  - Keep nav transparent before it reaches the viewport top
-  - Add background/border once it is actually stuck to top
+  - Keep nav transparent when page is at very top
+  - Add background/border once user starts scrolling down
 */
 if (stickyNav) {
   function updateStickyNavState() {
-    const isStuck = stickyNav.getBoundingClientRect().top <= 0;
+    const isStuck = window.scrollY > 8;
     stickyNav.classList.toggle("is-stuck", isStuck);
   }
 
