@@ -18,6 +18,8 @@
 const navTabs = document.querySelectorAll(".nav-tab");
 const stickyNav = document.querySelector(".sticky-nav");
 const toTopButton = document.getElementById("to-top-button");
+const themeToggleInput = document.getElementById("theme-toggle-input");
+const THEME_STORAGE_KEY = "resume-site-theme";
 
 /**
  * Returns current sticky navigation bar height.
@@ -108,6 +110,33 @@ if (toTopButton) {
 
   toTopButton.addEventListener("focus", () => {
     toTopButton.title = "To top";
+  });
+}
+
+/*
+  Light/Dark mode behavior:
+  - Uses light mode as default
+  - Toggles a body class for theme colors
+  - Persists user preference in localStorage
+*/
+if (themeToggleInput) {
+  function applyTheme(theme) {
+    const isDark = theme === "dark";
+    document.body.classList.toggle("theme-dark", isDark);
+    themeToggleInput.checked = isDark;
+  }
+
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  if (savedTheme === "dark" || savedTheme === "light") {
+    applyTheme(savedTheme);
+  } else {
+    applyTheme("light");
+  }
+
+  themeToggleInput.addEventListener("change", () => {
+    const nextTheme = themeToggleInput.checked ? "dark" : "light";
+    applyTheme(nextTheme);
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
   });
 }
 
