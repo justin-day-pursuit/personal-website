@@ -36,7 +36,6 @@
             Contact
           </button>
           <label class="theme-toggle" for="theme-toggle-input" title="Toggle light and dark mode">
-            <span class="theme-icon" aria-hidden="true">☀</span>
             <input
               id="theme-toggle-input"
               class="theme-toggle-input"
@@ -44,8 +43,12 @@
               role="switch"
               aria-label="Toggle light and dark mode"
             />
-            <span class="theme-toggle-track" aria-hidden="true"></span>
-            <span class="theme-icon" aria-hidden="true">☾</span>
+            <span class="theme-toggle-track" aria-hidden="true">
+              <span class="theme-toggle-thumb">
+                <span class="theme-glyph theme-glyph-sun">☀</span>
+                <span class="theme-glyph theme-glyph-moon">☾</span>
+              </span>
+            </span>
           </label>
         </div>
       </nav>
