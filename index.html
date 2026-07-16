@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+      Basic metadata for browser rendering.
+      You can safely edit the <title> at any time to match your brand.
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Justin's Story</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      STICKY NAVIGATION BAR
+      - Stays at top of page and uses JS for smooth section scrolling.
+      - Name is left-aligned; section buttons are right-aligned.
+    -->
+    <div class="sticky-nav">
+      <nav class="main-nav container" aria-label="Profile section navigation">
+        <!--
+          REPLACE name text below with your preferred display name.
+        -->
+        <p class="nav-name">Justin Day</p>
+        <div class="nav-links">
+          <button class="nav-tab" data-target="about" type="button">
+            About
+          </button>
+          <button class="nav-tab" data-target="resume-projects" type="button">
+            Projects
+          </button>
+          <button class="nav-tab" data-target="more-on-me" type="button">
+            More On Me
+          </button>
+          <button class="nav-tab" data-target="contact" type="button">
+            Contact
+          </button>
+          <label class="theme-toggle" for="theme-toggle-input" title="Toggle light and dark mode">
+            <span class="theme-icon" aria-hidden="true">☀</span>
+            <input
+              id="theme-toggle-input"
+              class="theme-toggle-input"
+              type="checkbox"
+              role="switch"
+              aria-label="Toggle light and dark mode"
+            />
+            <span class="theme-toggle-track" aria-hidden="true"></span>
+            <span class="theme-icon" aria-hidden="true">☾</span>
+          </label>
+        </div>
+      </nav>
+    </div>
+
+    <!--
+      SITE HEADER
+      - Contains intro line only (static in normal page flow).
+    -->
+    <header class="site-header">
+      <div class="container header-layout">
+        <div class="header-text">
+          <!-- REPLACE [Your Name] with your real full name -->
+          <h1>Software Engineer & AI Builder, using AI-powered tools to create custom and efficient solutions.</h1>
+          <p class="headline">
+            Bachelors in Computer Science, with passion for building solutions that make a difference. Currently purusing a Masters in Software Engineering at Arizona State University.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!--
+      MAIN CONTENT
+      - Single page "resume story" layout.
+      - Starts with photo/introduction, then qualities, then conclusion.
+    -->
+    <main>
+      <section id="about" class="intro-section container">
+        <div class="intro-copy">
+          <h2>About</h2>
+          <p>
+            I build software with a practical, people-first mindset. My path
+            blends engineering depth with real experience teaching, listening,
+            and adapting in fast-paced environments. I enjoy turning complexity
+            into clear, useful outcomes that help teams and users move forward.
+          </p>
+          <p>
+            The way I work is grounded in communication, creative
+            problem-solving, and rapid learning. These strengths have been
+            shaped in classrooms, customer-facing roles, and challenging
+            academic projects where persistence and critical thinking were
+            non-negotiable.
+          </p>
+          <p>
+            Here is a better look at my professional experience ->
+            <a
+              href="https://example.com/your-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Resume (PDF)</a
+            >
+          </p>
+        </div>
+        <div class="photo-wrapper">
+          <!--
+            REPLACE THIS IMAGE:
+            1) Put your photo file in this project folder (example: profile.jpg)
+            2) Change src to that file name
+            3) Update alt text so screen readers describe the image correctly
+          -->
+          <img
+            src="profilePic.jpeg"
+            alt="That's Me!"
+          />
+        </div>
+      </section>
+
+      <section id="resume-projects" class="story-section container">
+        <h2>Projects</h2>
+        <p>
+          This section highlights projects that reflect how I think, build, and
+          deliver practical solutions.
+        </p>
+        <div class="projects-grid">
+          <article class="project-card">
+            <!--
+              PROJECT IMAGE PLACEHOLDER (LEFT SIDE)
+              Replace this placeholder block with your real project image:
+              1) Use an <img> tag in this area
+              2) Point src to your project screenshot/image file
+              3) Update alt text to describe the image
+            -->
+            <div class="project-media" role="img" aria-label="Project 1 image placeholder">
+              Project 1 Image
+            </div>
+            <div class="project-content">
+              <h3>Project 1: [Project Name Placeholder]</h3>
+              <p>
+                <!-- REPLACE with your real project URL -->
+                <a
+                  href="https://example.com/project-one"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open Project 1</a
+                >
+              </p>
+              <ul>
+                <li>Built to solve [specific problem placeholder] for [target users].</li>
+                <li>Focused on clean architecture, usability, and measurable outcomes.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <!--
+              PROJECT IMAGE PLACEHOLDER (LEFT SIDE)
+              Replace this placeholder block with your real project image:
+              1) Use an <img> tag in this area
+              2) Point src to your project screenshot/image file
+              3) Update alt text to describe the image
+            -->
+            <div class="project-media" role="img" aria-label="Project 2 image placeholder">
+              Project 2 Image
+            </div>
+            <div class="project-content">
+              <h3>Project 2: [Project Name Placeholder]</h3>
+              <p>
+                <!-- REPLACE with your real project URL -->
+                <a
+                  href="https://example.com/project-two"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open Project 2</a
+                >
+              </p>
+              <ul>
+                <li>Designed and implemented [feature placeholder] end to end.</li>
+                <li>Demonstrates adaptability, quick learning, and practical execution.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="more-on-me" class="story-section container">
+        <h2>More On Me</h2>
+        <div class="traits-list">
+          <article class="trait-item">
+            <h3>My Strongest Quality: Creative Problem Solving</h3>
+            <p>
+              Creative problem solving is where I bring the most value. I approach
+              problems logically, but I stay flexible when the first path is not
+              the best one. Whether I am supporting users with unexpected requests
+              or designing a technical solution, I focus on understanding the core
+              need and building a response that is both effective and thoughtful.
+            </p>
+            <p>
+              That mindset was sharpened while teaching students with different
+              learning needs and while working in a busy New York City store where
+              not every customer request had a standard answer. In both settings, I
+              learned how to stay calm, ask better questions, and create solutions
+              that feel tailored instead of generic.
+            </p>
+          </article>
+
+          <article class="trait-item">
+            <h3>Communication That Builds Trust</h3>
+            <p>
+              I am an effective communicator because I have spent years translating
+              ideas across different levels of experience. I started volunteering as
+              a teacher at 14, and that work has made me patient, clear, and
+              genuinely attentive to what others are trying to say.
+            </p>
+            <p>
+              In technical environments, this means I can break down complex ideas,
+              align with teammates, and keep collaboration productive. In practical
+              terms, I do not just explain my point; I make sure the other person is
+              understood too. That two-way communication helps projects move faster
+              with fewer misunderstandings.
+            </p>
+          </article>
+
+          <article class="trait-item">
+            <h3>Fast Learning with Follow-Through</h3>
+            <p>
+              I learn quickly, especially under pressure. In my cryptography course,
+              I had to master advanced topics beyond my previous background,
+              including modular arithmetic and field theory, within a short period.
+            </p>
+            <p>
+              I treated that challenge like an engineering problem: break it down,
+              study consistently, test my understanding, and improve until I reached
+              mastery. That same approach carries into software work whenever I need
+              to adopt new tools, frameworks, or domains on a tight timeline.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="contact-section container">
+        <h2>Contact</h2>
+        <p>
+          I am a driven, coachable engineer who combines technical skill with
+          strong collaboration and real-world adaptability. If your team values
+          someone who can communicate clearly, solve problems creatively, and
+          ramp up quickly, I would welcome the chance to speak with you.
+        </p>
+        <p>
+          You can reach me through the form or using the contact information below. I look forward
+          to connecting.
+        </p>
+        <form
+          id="contact-form"
+          class="contact-form"
+          autocomplete="off"
+          novalidate
+          data-recipient="justin.day@pursuit.org"
+        >
+          <!--
+            REPLACE data-recipient above with your preferred inbox if needed.
+            Browser autofill is intentionally disabled on all fields below.
+          -->
+          <div class="form-field">
+            <label for="contact-return-email">Your Email</label>
+            <input
+              id="contact-return-email"
+              name="contact_return_email"
+              type="email"
+              required
+              autocomplete="off"
+              autocapitalize="off"
+              autocorrect="off"
+              spellcheck="false"
+              inputmode="email"
+              placeholder="name@example.com"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-subject">Subject</label>
+            <input
+              id="contact-subject"
+              name="contact_subject"
+              type="text"
+              required
+              autocomplete="off"
+              autocapitalize="sentences"
+              autocorrect="off"
+              spellcheck="false"
+              placeholder="How can we collaborate?"
+            />
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">Inquiry</label>
+            <textarea
+              id="contact-message"
+              name="contact_message"
+              rows="6"
+              required
+              autocomplete="off"
+              autocapitalize="sentences"
+              autocorrect="off"
+              spellcheck="false"
+              placeholder="Share details about the opportunity..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="connect-button" disabled>Let's Connect</button>
+          <p id="contact-form-status" class="contact-form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <!--
+      FOOTER CONTACT BLOCK
+      Replace all placeholders with your real contact details.
+      target="_blank" opens links in a new tab, as requested.
+    -->
+    <footer class="site-footer">
+      <div class="container footer-layout">
+        <div class="footer-bottom">
+          <ul class="contact-list">
+            <li>
+              <!-- REPLACE placeholder email address -->
+              <a href="mailto:justin.day@pursuit.org" target="_blank" rel="noopener noreferrer">
+                <span>justin.day@pursuit.org</span>
+              </a>
+            </li>
+            <li>
+              <!-- REPLACE with your LinkedIn URL -->
+              <a
+                href="https://www.linkedin.com/in/justin-day-192605164/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+                class="social-icon-link"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M6.94 8.5V19H3.5V8.5h3.44ZM7.15 5.27c0 1.03-.77 1.85-1.93 1.85h-.02c-1.09 0-1.9-.82-1.9-1.85 0-1.06.83-1.86 1.94-1.86 1.11 0 1.88.8 1.91 1.86ZM20.5 12.98V19h-3.44v-5.62c0-1.41-.5-2.37-1.76-2.37-.96 0-1.53.65-1.78 1.28-.09.22-.11.53-.11.84V19H10V8.5h3.3v1.43c.48-.74 1.33-1.8 3.25-1.8 2.38 0 4.16 1.56 4.16 4.85Z"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <!-- REPLACE with your GitHub URL -->
+              <a
+                href="https://github.com/justin-day-pursuit"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                title="GitHub"
+                class="social-icon-link"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.1.82-.26.82-.58v-2.04c-3.34.73-4.04-1.41-4.04-1.41-.54-1.38-1.33-1.75-1.33-1.75-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.82 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.91 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.59-2.81 5.61-5.49 5.9.43.38.81 1.1.81 2.22v3.29c0 .32.21.69.83.58A12 12 0 0 0 12 .5Z"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright">&copy; 2026 Justin Day. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!--
+      FLOATING "TO TOP" BUTTON
+      - Small square button anchored at bottom-right of viewport.
+      - title="To top" provides native tooltip text on hover.
+      - JavaScript in script.js handles the click-to-top behavior.
+    -->
+    <button
+      id="to-top-button"
+      class="to-top-button"
+      type="button"
+      title="To top"
+      aria-label="To top"
+    >
+      ↑
+    </button>
+
+    <!-- Keep JavaScript at the end so HTML loads first -->
+    <script src="script.js"></script>
+  </body>
+</html>
