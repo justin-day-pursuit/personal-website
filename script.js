@@ -150,6 +150,7 @@ if (themeToggleInput) {
 if (contactForm) {
   const submitButton = contactForm.querySelector('button[type="submit"]');
 
+  // Return true only when every required field has content and passes native validation.
   function areRequiredFieldsFilled() {
     const requiredFields = contactForm.querySelectorAll("[required]");
     return Array.from(requiredFields).every((field) => {
@@ -180,6 +181,8 @@ if (contactForm) {
     const returnEmail = returnEmailInput ? returnEmailInput.value.trim() : "";
     const subject = subjectInput ? subjectInput.value.trim() : "";
     const inquiry = messageInput ? messageInput.value.trim() : "";
+
+    // Inline status keeps user informed without redirecting away from the page.
     if (contactFormStatus) {
       contactFormStatus.textContent = "Sending...";
     }
@@ -188,6 +191,7 @@ if (contactForm) {
     }
 
     try {
+      // FormSubmit expects standard form fields and special underscore options.
       const payload = new FormData();
       payload.append("Return Email", returnEmail);
       payload.append("Subject", subject);

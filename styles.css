@@ -182,6 +182,7 @@ h1 {
   color: var(--text-muted);
 }
 
+/* Hide native checkbox but keep it keyboard/screen-reader accessible */
 .theme-toggle-input {
   position: absolute;
   width: 1px;
@@ -190,6 +191,7 @@ h1 {
   pointer-events: none;
 }
 
+/* Track is the visible switch background */
 .theme-toggle-track {
   width: 2.5rem;
   height: 1.4rem;
@@ -201,6 +203,7 @@ h1 {
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+/* Thumb is the moving circle inside the track */
 .theme-toggle-track::after {
   content: "";
   position: absolute;
@@ -504,6 +507,7 @@ main {
   flex-wrap: wrap;
 }
 
+/* Left cluster of contact links/icons */
 .contact-list {
   list-style: none;
   display: flex;
