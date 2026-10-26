@@ -311,17 +311,17 @@ main {
   margin-bottom: 0.35rem;
 }
 
-/* More-on-me narrative layout with squarish cards expanding to original full narrative */
+/* More-on-me narrative layout with squarish cards matching full intended vertical height */
 .traits-list {
   margin-top: 1.4rem;
   display: grid;
-  gap: 1.5rem;
+  gap: 1.6rem;
 }
 
 .trait-card {
-  width: 330px;
+  width: 320px;
   max-width: 100%;
-  min-height: 190px;
+  min-height: 310px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -351,12 +351,12 @@ main {
   text-align: right;
 }
 
-/* Expanded state: fills the page width to display the original narrative format */
+/* Expanded state: expands horizontally only (1-way) to fill the section */
 .trait-card.is-locked,
 .trait-card.is-hover-open {
   width: 100%;
   max-width: 81%;
-  min-height: auto;
+  min-height: 310px;
   border-color: #3b82f6;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16), 0 8px 26px rgba(17, 24, 39, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
@@ -364,31 +364,55 @@ main {
 
 .trait-header {
   width: 100%;
-  padding: 1.4rem 1.6rem;
+  padding: 1.5rem 1.6rem;
   background: transparent;
   border: 0;
   cursor: pointer;
   font: inherit;
   color: var(--text-main);
   position: relative;
-  transition: background-color 0.2s ease;
+  display: flex;
+  transition: background-color 0.2s ease, min-height 0.35s ease;
 }
 
-.trait-card-left .trait-header {
-  display: flex;
+/* Collapsed: header fills the 310px square vertically with title at top and indicator at bottom */
+.trait-card:not(.is-locked):not(.is-hover-open) .trait-header {
+  min-height: 310px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.trait-card-left:not(.is-locked):not(.is-hover-open) .trait-header {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.trait-card-right:not(.is-locked):not(.is-hover-open) .trait-header {
+  align-items: flex-end;
+  text-align: right;
+}
+
+/* Expanded: header becomes a compact banner row above the paragraphs */
+.trait-card-left.is-locked .trait-header,
+.trait-card-left.is-hover-open .trait-header {
+  min-height: auto;
+  flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.2rem;
   text-align: left;
+  padding-bottom: 0.5rem;
 }
 
-.trait-card-right .trait-header {
-  display: flex;
+.trait-card-right.is-locked .trait-header,
+.trait-card-right.is-hover-open .trait-header {
+  min-height: auto;
   flex-direction: row-reverse;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1.2rem;
   text-align: right;
+  padding-bottom: 0.5rem;
 }
 
 .trait-header:focus-visible {
@@ -398,7 +422,7 @@ main {
 
 .trait-title {
   font-family: var(--font-display);
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.35;
@@ -409,8 +433,8 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.3rem;
-  height: 2.3rem;
+  width: 2.4rem;
+  height: 2.4rem;
   border-radius: 999px;
   border: 1.5px solid rgba(59, 130, 246, 0.3);
   background: rgba(59, 130, 246, 0.08);
@@ -440,23 +464,22 @@ main {
   color: #ffffff;
 }
 
-/* Content expands naturally to display original vertical paragraphs */
+/* Content: fades in smoothly without vertical expansion */
 .trait-content {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.35s ease 0.1s;
 }
 
 .trait-card.is-locked .trait-content,
 .trait-card.is-hover-open .trait-content {
-  grid-template-rows: 1fr;
+  opacity: 1;
+  max-height: 1200px;
 }
 
 .trait-inner {
-  overflow: hidden;
-  padding: 0 1.6rem;
-  opacity: 0;
-  transition: opacity 0.3s ease, padding 0.38s ease;
+  padding: 0 1.6rem 1.6rem;
 }
 
 .trait-card-left .trait-inner {
@@ -465,12 +488,6 @@ main {
 
 .trait-card-right .trait-inner {
   text-align: right;
-}
-
-.trait-card.is-locked .trait-inner,
-.trait-card.is-hover-open .trait-inner {
-  opacity: 1;
-  padding: 0 1.6rem 1.6rem;
 }
 
 .trait-inner p {
@@ -955,13 +972,15 @@ body.theme-dark .to-top-button {
   }
 
   .trait-card {
-    width: 330px;
+    width: 320px;
+    min-height: 310px;
   }
 
   .trait-card.is-locked,
   .trait-card.is-hover-open {
     width: 100%;
     max-width: 81%;
+    min-height: 310px;
   }
 }
 
@@ -972,9 +991,17 @@ body.theme-dark .to-top-button {
     min-height: auto;
   }
 
+  .trait-card:not(.is-locked):not(.is-hover-open) .trait-header {
+    min-height: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .trait-card.is-locked,
   .trait-card.is-hover-open {
     max-width: 100%;
+    min-height: auto;
   }
 
   .trait-header {
