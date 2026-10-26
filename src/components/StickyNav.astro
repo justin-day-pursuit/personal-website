@@ -1,0 +1,63 @@
+---
+/**
+ * ============================================================================
+ * STICKY NAVIGATION BAR (StickyNav.astro)
+ * ============================================================================
+ * What this component does:
+ * - Stays fixed to the top of the screen as you scroll.
+ * - Displays your name on the left and navigation buttons on the right.
+ * - Includes the light/dark mode switch.
+ * - Smoothly scrolls to sections when links are clicked.
+ *
+ * HOW TO MAINTAIN:
+ * - Change the display name by editing the <p class="nav-name"> below.
+ * - If you add a section, add a <button class="nav-tab" data-target="your-section-id">.
+ * ============================================================================
+ */
+---
+
+<div class="sticky-nav">
+  <nav class="main-nav container" aria-label="Profile section navigation">
+    <!-- Display Name (left-aligned) -->
+    <p class="nav-name">Justin Day</p>
+
+    <!-- Navigation Buttons and Theme Switch (right-aligned) -->
+    <div class="nav-links">
+      <button class="nav-tab" data-target="about" type="button">
+        About
+      </button>
+      <button class="nav-tab" data-target="resume-projects" type="button">
+        Projects
+      </button>
+      <button class="nav-tab" data-target="more-on-me" type="button">
+        More On Me
+      </button>
+      <button class="nav-tab" data-target="contact" type="button">
+        Contact
+      </button>
+
+      <!--
+        Light / Dark Theme Switch
+        - Sun = light mode
+        - Moon = dark mode
+        - Persisted to browser localStorage via src/scripts/theme.ts
+      -->
+      <label class="theme-toggle" for="theme-toggle-input" title="Toggle light and dark mode">
+        <span class="theme-icon" aria-hidden="true">☀</span>
+        <input
+          id="theme-toggle-input"
+          class="theme-toggle-input"
+          type="checkbox"
+          role="switch"
+          aria-label="Toggle light and dark mode"
+        />
+        <span class="theme-toggle-track" aria-hidden="true"></span>
+        <span class="theme-icon" aria-hidden="true">☾</span>
+      </label>
+    </div>
+  </nav>
+</div>
+
+<!-- Load TypeScript navigation and theme behaviors -->
+<script src="../scripts/navigation.ts"></script>
+<script src="../scripts/theme.ts"></script>

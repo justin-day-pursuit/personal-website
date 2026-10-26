@@ -1,0 +1,55 @@
+---
+/**
+ * ============================================================================
+ * ABOUT SECTION (About.astro)
+ * ============================================================================
+ * What this component does:
+ * - Introduces your background, work approach, and personal philosophy.
+ * - Links to your downloadable resume PDF.
+ * - Displays your profile photo.
+ *
+ * HOW TO MAINTAIN:
+ * 1) To update your resume:
+ *    - Put your new PDF file into the `public/` directory named `jdayres.pdf`
+ *      (it replaces the old one automatically, keeping links intact).
+ * 2) To update your profile photo:
+ *    - Put your new photo into the `public/` directory named `profilePic.jpeg`.
+ * 3) To edit your bio paragraphs:
+ *    - Edit the <p> tags inside the <div class="intro-copy"> below.
+ * ============================================================================
+ */
+---
+
+<section id="about" class="intro-section container">
+  <div class="intro-copy">
+    <h2>About</h2>
+    <p>
+      I build software with a practical, people-first mindset. My path
+      blends engineering depth with real experience teaching, listening,
+      and adapting in fast-paced environments. I enjoy turning complexity
+      into clear, useful outcomes that help teams and users move forward.
+    </p>
+    <p>
+      The way I work is grounded in communication, creative
+      problem-solving, and rapid learning. These strengths have been
+      shaped in classrooms, customer-facing roles, and challenging
+      academic projects where persistence and critical thinking were
+      non-negotiable.
+    </p>
+    <p>
+      Here is a better look at my professional experience -&gt;
+      <a
+        href="/jdayres.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Resume (PDF)</a
+      >
+    </p>
+  </div>
+  <div class="photo-wrapper">
+    <img
+      src="/profilePic.jpeg"
+      alt="That's Me!"
+    />
+  </div>
+</section>

@@ -1,0 +1,48 @@
+---
+/**
+ * ============================================================================
+ * BASE LAYOUT (Layout.astro)
+ * ============================================================================
+ * What this file does:
+ * - Provides the HTML page shell (<head>, <body>, metadata).
+ * - Imports the site's plain CSS stylesheet (src/styles/global.css).
+ * - Loads performance and analytics scripts (Vercel Web Analytics & Speed Insights).
+ *
+ * HOW TO MAINTAIN:
+ * - To change the page title in browser tabs, update the `title` prop in src/pages/index.astro.
+ * - To change colors or fonts, edit src/styles/global.css.
+ * ============================================================================
+ */
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Justin's Story",
+  description = "Software Engineer & AI Builder, using AI-powered tools to create custom and efficient solutions."
+} = Astro.props;
+
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Vercel Web Analytics & Speed Insights -->
+    <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    <script is:inline>
+      window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,49 @@
+---
+/**
+ * ============================================================================
+ * MAIN HOMEPAGE (index.astro)
+ * ============================================================================
+ * What this file does:
+ * - Serves as the primary entry point for the personal resume story website.
+ * - Imports and arranges each modular section in chronological order:
+ *   1) StickyNav (Fixed top bar with links & theme toggle)
+ *   2) Header (Hero headline)
+ *   3) About (Bio, profile photo, and resume link)
+ *   4) Projects (Featured engineering projects)
+ *   5) MoreOnMe (Interactive expandable trait cards)
+ *   6) Contact (Form & direct inquiry)
+ *   7) Footer (Social links & copyright)
+ *   8) ToTopButton (Floating button)
+ *
+ * HOW TO MAINTAIN:
+ * - To reorganize sections, simply change the order of components below.
+ * - To edit content within a section, open that section's file in src/components/.
+ * ============================================================================
+ */
+
+import Layout from '../layouts/Layout.astro';
+import StickyNav from '../components/StickyNav.astro';
+import Header from '../components/Header.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import MoreOnMe from '../components/MoreOnMe.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import ToTopButton from '../components/ToTopButton.astro';
+---
+
+<Layout
+  title="Justin's Story"
+  description="Software Engineer & AI Builder, using AI-powered tools to create custom and efficient solutions."
+>
+  <StickyNav />
+  <Header />
+  <main>
+    <About />
+    <Projects />
+    <MoreOnMe />
+    <Contact />
+  </main>
+  <Footer />
+  <ToTopButton />
+</Layout>
