@@ -234,3 +234,70 @@ if (contactForm) {
   });
 }
 
+/*
+  Expandable trait cards in "More On Me":
+  - 1-second hover delay before expanding (prompts clicking).
+  - Hovering and clicking are mutually exclusive:
+    * Hover-opened cards close on mouseleave and box out clicking to lock open
+      (clicking while in hover preview dismisses/closes the preview).
+    * Clicking a closed card locks it open until the user clicks it again.
+*/
+const traitCards = document.querySelectorAll(".trait-card");
+const HOVER_DELAY_MS = 1000;
+
+traitCards.forEach((card) => {
+  const toggleBtn = card.querySelector(".trait-toggle-btn");
+  let hoverTimer = null;
+
+  card.addEventListener("mouseenter", () => {
+    if (card.classList.contains("is-locked")) return;
+
+    clearTimeout(hoverTimer);
+    hoverTimer = setTimeout(() => {
+      if (!card.classList.contains("is-locked")) {
+        card.classList.add("is-hover-open");
+        if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "true");
+      }
+    }, HOVER_DELAY_MS);
+  });
+
+  card.addEventListener("mouseleave", () => {
+    clearTimeout(hoverTimer);
+    hoverTimer = null;
+
+    if (card.classList.contains("is-hover-open")) {
+      card.classList.remove("is-hover-open");
+      if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  function handleToggleClick(event) {
+    // If the click is inside the drawer text selection, don't close it
+    if (event.target.closest(".trait-drawer") && card.classList.contains("is-locked")) {
+      return;
+    }
+
+    clearTimeout(hoverTimer);
+    hoverTimer = null;
+
+    if (card.classList.contains("is-hover-open")) {
+      card.classList.remove("is-hover-open");
+      if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+      return;
+    }
+
+    const isLocked = card.classList.toggle("is-locked");
+    if (toggleBtn) toggleBtn.setAttribute("aria-expanded", String(isLocked));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", handleToggleClick);
+  }
+
+  const labelSide = card.querySelector(".trait-label-side");
+  if (labelSide) {
+    labelSide.addEventListener("click", handleToggleClick);
+  }
+});
+
+

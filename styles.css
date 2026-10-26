@@ -311,29 +311,186 @@ main {
   margin-bottom: 0.35rem;
 }
 
-/* More-on-me narrative layout with alternating subsection justification */
+/* More-on-me narrative layout: two-sided squarish cards matching user sketch */
 .traits-list {
-  margin-top: 1rem;
+  margin-top: 1.6rem;
   display: grid;
-  gap: 1.35rem;
+  gap: 1.8rem;
 }
 
-.trait-item {
-  max-width: 89%;
+.trait-card {
+  width: 320px;
+  height: 250px;
+  max-width: 100%;
+  display: flex;
+  align-items: stretch;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid #d1d5db;
+  border-radius: 18px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 16px rgba(17, 24, 39, 0.05);
+  overflow: hidden;
+  transition: width 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              background-color 0.25s ease;
 }
 
-.trait-item:nth-child(odd) {
-  margin-right: auto; /* First block starts left */
-  text-align: left;
+.trait-card-left {
+  margin-right: auto;
+  margin-left: 0;
 }
 
-.trait-item:nth-child(even) {
-  margin-left: auto; /* Alternate to right */
+.trait-card-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Expanded state: expands purely horizontally into the page */
+.trait-card.is-locked,
+.trait-card.is-hover-open {
+  width: min(100%, 780px);
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16), 0 8px 26px rgba(17, 24, 39, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Static section label side: never moves or changes */
+.trait-label-side {
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.trait-card-right .trait-label-side {
+  justify-content: flex-end;
   text-align: right;
 }
 
-.trait-item h3 {
-  margin-top: 0;
+.trait-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+
+/* Crisp vertical dividing line matching the sketch */
+.trait-divider {
+  width: 1px;
+  min-width: 1px;
+  background: #cbd5e1;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* Toggle button holding the directional expansion indicator */
+.trait-toggle-btn {
+  width: 98px;
+  min-width: 98px;
+  max-width: 98px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.trait-toggle-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.trait-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(59, 130, 246, 0.35);
+  background: rgba(59, 130, 246, 0.08);
+  color: #2563eb;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.trait-chevron {
+  display: block;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Arrow rotation when open */
+.trait-card.is-locked .trait-chevron,
+.trait-card.is-hover-open .trait-chevron {
+  transform: rotate(180deg);
+}
+
+.trait-card.is-locked .trait-indicator,
+.trait-card.is-hover-open .trait-indicator {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+}
+
+/* Content drawer expanding horizontally between/beside the label */
+.trait-drawer {
+  width: 0;
+  min-width: 0;
+  max-width: 0;
+  height: 100%;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-width 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s ease;
+}
+
+.trait-card.is-locked .trait-drawer,
+.trait-card.is-hover-open .trait-drawer {
+  flex: 1 1 auto;
+  max-width: 480px;
+  width: auto;
+  opacity: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  pointer-events: auto;
+}
+
+.trait-inner {
+  padding: 1.5rem 1.6rem;
+}
+
+.trait-card-left .trait-inner {
+  text-align: left;
+}
+
+.trait-card-right .trait-inner {
+  text-align: right;
+}
+
+.trait-inner p {
+  color: var(--text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+.trait-inner p + p {
+  margin-top: 0.85rem;
 }
 
 /* Projects are displayed in a two-column grid of individual spaces */
@@ -637,6 +794,44 @@ body.theme-dark .project-card {
   border-color: rgba(148, 163, 184, 0.32);
 }
 
+body.theme-dark .trait-card {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: #334155;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+body.theme-dark .trait-card.is-locked,
+body.theme-dark .trait-card.is-hover-open {
+  border-color: #38bdf8;
+  background: rgba(15, 23, 42, 0.94);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22), 0 10px 28px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+body.theme-dark .trait-divider {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.theme-dark .trait-title {
+  color: #e5e7eb;
+}
+
+body.theme-dark .trait-inner p {
+  color: #94a3b8;
+}
+
+body.theme-dark .trait-indicator {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+}
+
+body.theme-dark .trait-card.is-locked .trait-indicator,
+body.theme-dark .trait-card.is-hover-open .trait-indicator {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+}
+
 body.theme-dark .project-media {
   background: #0f172a;
   border-color: #475569;
@@ -773,7 +968,63 @@ body.theme-dark .to-top-button {
     min-height: 190px;
   }
 
-  .trait-item {
-    max-width: 81%;
+  .trait-card {
+    width: 320px;
+    height: 250px;
+  }
+
+  .trait-card.is-locked,
+  .trait-card.is-hover-open {
+    width: min(100%, 780px);
+  }
+}
+
+/* Mobile responsive trait card layout */
+@media (max-width: 759px) {
+  .trait-card {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .trait-label-side {
+    width: 100%;
+    min-width: 100%;
+    padding: 1.25rem 1.35rem;
+  }
+
+  .trait-divider {
+    width: 100%;
+    height: 1px;
+    min-height: 1px;
+  }
+
+  .trait-drawer {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: none;
+  }
+
+  .trait-card.is-locked .trait-drawer,
+  .trait-card.is-hover-open .trait-drawer {
+    display: block;
+    max-width: 100%;
+  }
+
+  .trait-toggle-btn {
+    width: 100%;
+    max-width: 100%;
+    height: 3.5rem;
+  }
+
+  .trait-card-left .trait-chevron,
+  .trait-card-right .trait-chevron {
+    transform: rotate(90deg);
+  }
+
+  .trait-card.is-locked .trait-chevron,
+  .trait-card.is-hover-open .trait-chevron {
+    transform: rotate(-90deg);
   }
 }
