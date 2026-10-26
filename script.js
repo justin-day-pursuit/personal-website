@@ -236,18 +236,55 @@ if (contactForm) {
 
 /*
   Expandable trait cards in "More On Me":
-  - Hovering expands automatically via CSS.
-  - Clicking the header toggles a pinned open state and synchronizes aria-expanded.
+  - 1-second hover delay before expanding (prompts clicking).
+  - Hovering and clicking are mutually exclusive:
+    * Hover-opened cards close on mouseleave and box out clicking to lock open
+      (clicking while in hover preview dismisses/closes the preview).
+    * Clicking a closed card locks it open until the user clicks it again.
 */
 const traitCards = document.querySelectorAll(".trait-card");
+const HOVER_DELAY_MS = 1000;
 
 traitCards.forEach((card) => {
   const header = card.querySelector(".trait-header");
   if (!header) return;
 
+  let hoverTimer = null;
+
+  card.addEventListener("mouseenter", () => {
+    if (card.classList.contains("is-locked")) return;
+
+    clearTimeout(hoverTimer);
+    hoverTimer = setTimeout(() => {
+      if (!card.classList.contains("is-locked")) {
+        card.classList.add("is-hover-open");
+        header.setAttribute("aria-expanded", "true");
+      }
+    }, HOVER_DELAY_MS);
+  });
+
+  card.addEventListener("mouseleave", () => {
+    clearTimeout(hoverTimer);
+    hoverTimer = null;
+
+    if (card.classList.contains("is-hover-open")) {
+      card.classList.remove("is-hover-open");
+      header.setAttribute("aria-expanded", "false");
+    }
+  });
+
   header.addEventListener("click", () => {
-    const isExpanded = card.classList.toggle("is-expanded");
-    header.setAttribute("aria-expanded", String(isExpanded));
+    clearTimeout(hoverTimer);
+    hoverTimer = null;
+
+    if (card.classList.contains("is-hover-open")) {
+      card.classList.remove("is-hover-open");
+      header.setAttribute("aria-expanded", "false");
+      return;
+    }
+
+    const isLocked = card.classList.toggle("is-locked");
+    header.setAttribute("aria-expanded", String(isLocked));
   });
 });
 
