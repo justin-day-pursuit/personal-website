@@ -311,22 +311,24 @@ main {
   margin-bottom: 0.35rem;
 }
 
-/* More-on-me narrative layout with alternating subsection cards */
+/* More-on-me narrative layout with alternating squarer cards */
 .traits-list {
-  margin-top: 1.2rem;
+  margin-top: 1.4rem;
   display: grid;
-  gap: 1.25rem;
+  gap: 1.6rem;
 }
 
 .trait-card {
   width: 100%;
-  max-width: 89%;
-  background: #ffffff;
-  border: 1px solid var(--border-soft);
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.04);
+  max-width: 480px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid #d1d5db;
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 16px rgba(17, 24, 39, 0.05);
   overflow: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease, background-color 0.25s ease;
 }
 
 .trait-card:nth-child(odd) {
@@ -341,8 +343,10 @@ main {
 
 .trait-card:hover,
 .trait-card.is-expanded {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-card-pop);
+  border-color: #3b82f6;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16), 0 8px 24px rgba(17, 24, 39, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+  transform: translateY(-2px);
 }
 
 .trait-header {
@@ -350,8 +354,8 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1.05rem 1.25rem;
+  gap: 1.1rem;
+  padding: 1.25rem 1.35rem;
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -379,13 +383,14 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background: rgba(96, 165, 250, 0.12);
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.08);
   color: #2563eb;
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, color 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .trait-chevron {
@@ -400,8 +405,9 @@ main {
 
 .trait-card:hover .trait-indicator,
 .trait-card.is-expanded .trait-indicator {
-  background: rgba(96, 165, 250, 0.24);
-  color: #1d4ed8;
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
 }
 
 .trait-content {
@@ -412,7 +418,7 @@ main {
 
 .trait-inner {
   overflow: hidden;
-  padding: 0 1.25rem;
+  padding: 0 1.35rem;
   opacity: 0;
   transition: opacity 0.3s ease, padding 0.35s ease;
 }
@@ -425,7 +431,7 @@ main {
 .trait-card:hover .trait-inner,
 .trait-card.is-expanded .trait-inner {
   opacity: 1;
-  padding: 0.15rem 1.25rem 1.25rem;
+  padding: 0.15rem 1.35rem 1.35rem;
 }
 
 .trait-inner p {
@@ -739,14 +745,16 @@ body.theme-dark .project-card {
 }
 
 body.theme-dark .trait-card {
-  background: #111827;
-  border-color: rgba(148, 163, 184, 0.32);
+  background: rgba(15, 23, 42, 0.65);
+  border-color: #334155;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
 body.theme-dark .trait-card:hover,
 body.theme-dark .trait-card.is-expanded {
-  border-color: #7dd3fc;
-  box-shadow: 0 10px 28px rgba(2, 6, 23, 0.5);
+  border-color: #38bdf8;
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.22), 0 10px 28px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 body.theme-dark .trait-title {
@@ -758,14 +766,16 @@ body.theme-dark .trait-inner p {
 }
 
 body.theme-dark .trait-indicator {
-  background: rgba(125, 211, 252, 0.16);
-  color: #7dd3fc;
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
 }
 
 body.theme-dark .trait-card:hover .trait-indicator,
 body.theme-dark .trait-card.is-expanded .trait-indicator {
-  background: rgba(125, 211, 252, 0.28);
-  color: #e0f2fe;
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
 }
 
 body.theme-dark .project-media {
@@ -905,6 +915,6 @@ body.theme-dark .to-top-button {
   }
 
   .trait-card {
-    max-width: 81%;
+    max-width: 480px;
   }
 }
