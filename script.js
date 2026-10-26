@@ -246,9 +246,7 @@ const traitCards = document.querySelectorAll(".trait-card");
 const HOVER_DELAY_MS = 1000;
 
 traitCards.forEach((card) => {
-  const header = card.querySelector(".trait-header");
-  if (!header) return;
-
+  const toggleBtn = card.querySelector(".trait-toggle-btn");
   let hoverTimer = null;
 
   card.addEventListener("mouseenter", () => {
@@ -258,7 +256,7 @@ traitCards.forEach((card) => {
     hoverTimer = setTimeout(() => {
       if (!card.classList.contains("is-locked")) {
         card.classList.add("is-hover-open");
-        header.setAttribute("aria-expanded", "true");
+        if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "true");
       }
     }, HOVER_DELAY_MS);
   });
@@ -269,23 +267,37 @@ traitCards.forEach((card) => {
 
     if (card.classList.contains("is-hover-open")) {
       card.classList.remove("is-hover-open");
-      header.setAttribute("aria-expanded", "false");
+      if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
     }
   });
 
-  header.addEventListener("click", () => {
+  function handleToggleClick(event) {
+    // If the click is inside the drawer text selection, don't close it
+    if (event.target.closest(".trait-drawer") && card.classList.contains("is-locked")) {
+      return;
+    }
+
     clearTimeout(hoverTimer);
     hoverTimer = null;
 
     if (card.classList.contains("is-hover-open")) {
       card.classList.remove("is-hover-open");
-      header.setAttribute("aria-expanded", "false");
+      if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
       return;
     }
 
     const isLocked = card.classList.toggle("is-locked");
-    header.setAttribute("aria-expanded", String(isLocked));
-  });
+    if (toggleBtn) toggleBtn.setAttribute("aria-expanded", String(isLocked));
+  }
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", handleToggleClick);
+  }
+
+  const labelSide = card.querySelector(".trait-label-side");
+  if (labelSide) {
+    labelSide.addEventListener("click", handleToggleClick);
+  }
 });
 
 

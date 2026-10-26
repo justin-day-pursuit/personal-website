@@ -209,15 +209,11 @@
         -->
         <div class="traits-list">
           <article class="trait-card trait-card-left" data-trait="1">
-            <button class="trait-header" type="button" aria-expanded="false" aria-controls="trait-body-1" aria-label="Toggle My Strongest Quality: Creative Problem Solving">
+            <div class="trait-label-side">
               <h3 class="trait-title">My Strongest Quality: Creative Problem Solving</h3>
-              <span class="trait-indicator" aria-hidden="true">
-                <svg class="trait-chevron" viewBox="0 0 24 24" width="22" height="22">
-                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-            </button>
-            <div class="trait-content" id="trait-body-1">
+            </div>
+            <div class="trait-divider" aria-hidden="true"></div>
+            <div class="trait-drawer" id="trait-drawer-1">
               <div class="trait-inner">
                 <p>
                   Creative problem solving is where I bring the most value. I approach
@@ -235,18 +231,24 @@
                 </p>
               </div>
             </div>
-          </article>
-
-          <article class="trait-card trait-card-right" data-trait="2">
-            <button class="trait-header" type="button" aria-expanded="false" aria-controls="trait-body-2" aria-label="Toggle Communication That Builds Trust">
-              <h3 class="trait-title">Communication That Builds Trust</h3>
+            <button class="trait-toggle-btn" type="button" aria-expanded="false" aria-controls="trait-drawer-1" aria-label="Toggle My Strongest Quality: Creative Problem Solving">
               <span class="trait-indicator" aria-hidden="true">
                 <svg class="trait-chevron" viewBox="0 0 24 24" width="22" height="22">
-                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </span>
             </button>
-            <div class="trait-content" id="trait-body-2">
+          </article>
+
+          <article class="trait-card trait-card-right" data-trait="2">
+            <button class="trait-toggle-btn" type="button" aria-expanded="false" aria-controls="trait-drawer-2" aria-label="Toggle Communication That Builds Trust">
+              <span class="trait-indicator" aria-hidden="true">
+                <svg class="trait-chevron" viewBox="0 0 24 24" width="22" height="22">
+                  <path d="M15 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="trait-drawer" id="trait-drawer-2">
               <div class="trait-inner">
                 <p>
                   I am an effective communicator because I have spent years translating
@@ -263,18 +265,18 @@
                 </p>
               </div>
             </div>
+            <div class="trait-divider" aria-hidden="true"></div>
+            <div class="trait-label-side">
+              <h3 class="trait-title">Communication That Builds Trust</h3>
+            </div>
           </article>
 
           <article class="trait-card trait-card-left" data-trait="3">
-            <button class="trait-header" type="button" aria-expanded="false" aria-controls="trait-body-3" aria-label="Toggle Fast Learning with Follow-Through">
+            <div class="trait-label-side">
               <h3 class="trait-title">Fast Learning with Follow-Through</h3>
-              <span class="trait-indicator" aria-hidden="true">
-                <svg class="trait-chevron" viewBox="0 0 24 24" width="22" height="22">
-                  <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-            </button>
-            <div class="trait-content" id="trait-body-3">
+            </div>
+            <div class="trait-divider" aria-hidden="true"></div>
+            <div class="trait-drawer" id="trait-drawer-3">
               <div class="trait-inner">
                 <p>
                   I learn quickly, especially under pressure. In my cryptography course,
@@ -289,6 +291,13 @@
                 </p>
               </div>
             </div>
+            <button class="trait-toggle-btn" type="button" aria-expanded="false" aria-controls="trait-drawer-3" aria-label="Toggle Fast Learning with Follow-Through">
+              <span class="trait-indicator" aria-hidden="true">
+                <svg class="trait-chevron" viewBox="0 0 24 24" width="22" height="22">
+                  <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
           </article>
         </div>
       </section>
