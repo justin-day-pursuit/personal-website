@@ -311,26 +311,29 @@ main {
   margin-bottom: 0.35rem;
 }
 
-/* More-on-me narrative layout with sideways-expanding square cards */
+/* More-on-me narrative layout with squarish cards expanding to original full narrative */
 .traits-list {
-  margin-top: 1.6rem;
+  margin-top: 1.4rem;
   display: grid;
-  gap: 1.8rem;
+  gap: 1.5rem;
 }
 
 .trait-card {
-  width: 270px;
-  height: 270px;
+  width: 330px;
+  max-width: 100%;
+  min-height: 190px;
   display: flex;
-  overflow: hidden;
-  position: relative;
+  flex-direction: column;
+  justify-content: flex-start;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1.5px solid #d1d5db;
   border-radius: 18px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 4px 16px rgba(17, 24, 39, 0.05);
-  transition: width 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+  overflow: hidden;
+  transition: width 0.38s cubic-bezier(0.4, 0, 0.2, 1),
+              max-width 0.38s cubic-bezier(0.4, 0, 0.2, 1),
               border-color 0.25s ease,
               box-shadow 0.25s ease,
               background-color 0.25s ease;
@@ -339,43 +342,53 @@ main {
 .trait-card-left {
   margin-right: auto;
   margin-left: 0;
-  flex-direction: row;
+  text-align: left;
 }
 
 .trait-card-right {
   margin-left: auto;
   margin-right: 0;
-  flex-direction: row-reverse;
+  text-align: right;
 }
 
-/* Active states: locked open or hover preview */
+/* Expanded state: fills the page width to display the original narrative format */
 .trait-card.is-locked,
 .trait-card.is-hover-open {
-  width: min(100%, 750px);
+  width: 100%;
+  max-width: 81%;
+  min-height: auto;
   border-color: #3b82f6;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.16), 0 8px 26px rgba(17, 24, 39, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .trait-header {
-  width: 270px;
-  min-width: 270px;
-  height: 100%;
-  padding: 1.5rem;
+  width: 100%;
+  padding: 1.4rem 1.6rem;
   background: transparent;
   border: 0;
   cursor: pointer;
-  text-align: left;
   font: inherit;
   color: var(--text-main);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  flex-shrink: 0;
   position: relative;
-  z-index: 2;
   transition: background-color 0.2s ease;
+}
+
+.trait-card-left .trait-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  text-align: left;
+}
+
+.trait-card-right .trait-header {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.2rem;
+  text-align: right;
 }
 
 .trait-header:focus-visible {
@@ -383,18 +396,9 @@ main {
   outline-offset: -2px;
 }
 
-.trait-header-box {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
 .trait-title {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.35;
@@ -405,8 +409,8 @@ main {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.3rem;
+  height: 2.3rem;
   border-radius: 999px;
   border: 1.5px solid rgba(59, 130, 246, 0.3);
   background: rgba(59, 130, 246, 0.08);
@@ -436,38 +440,43 @@ main {
   color: #ffffff;
 }
 
-/* Content drawer sliding sideways */
+/* Content expands naturally to display original vertical paragraphs */
 .trait-content {
-  flex: 1 1 auto;
-  min-width: 0;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  opacity: 0;
-  pointer-events: none;
-  border-left: 1px solid rgba(17, 24, 39, 0.08);
-  transition: opacity 0.3s ease 0.1s;
-}
-
-.trait-card-right .trait-content {
-  border-left: none;
-  border-right: 1px solid rgba(17, 24, 39, 0.08);
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.38s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .trait-card.is-locked .trait-content,
 .trait-card.is-hover-open .trait-content {
-  opacity: 1;
-  pointer-events: auto;
+  grid-template-rows: 1fr;
 }
 
 .trait-inner {
-  padding: 1.5rem 1.6rem;
+  overflow: hidden;
+  padding: 0 1.6rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, padding 0.38s ease;
+}
+
+.trait-card-left .trait-inner {
+  text-align: left;
+}
+
+.trait-card-right .trait-inner {
+  text-align: right;
+}
+
+.trait-card.is-locked .trait-inner,
+.trait-card.is-hover-open .trait-inner {
+  opacity: 1;
+  padding: 0 1.6rem 1.6rem;
 }
 
 .trait-inner p {
   color: var(--text-muted);
-  line-height: 1.7;
-  font-size: 0.95rem;
+  line-height: 1.75;
+  font-size: 1rem;
 }
 
 .trait-inner p + p {
@@ -809,14 +818,6 @@ body.theme-dark .trait-card.is-hover-open .trait-indicator {
   color: #ffffff;
 }
 
-body.theme-dark .trait-content {
-  border-left-color: rgba(255, 255, 255, 0.08);
-}
-
-body.theme-dark .trait-card-right .trait-content {
-  border-right-color: rgba(255, 255, 255, 0.08);
-}
-
 body.theme-dark .project-media {
   background: #0f172a;
   border-color: #475569;
@@ -954,13 +955,13 @@ body.theme-dark .to-top-button {
   }
 
   .trait-card {
-    width: 270px;
-    height: 270px;
+    width: 330px;
   }
 
   .trait-card.is-locked,
   .trait-card.is-hover-open {
-    width: min(100%, 750px);
+    width: 100%;
+    max-width: 81%;
   }
 }
 
@@ -968,44 +969,15 @@ body.theme-dark .to-top-button {
 @media (max-width: 759px) {
   .trait-card {
     width: 100%;
-    height: auto;
-    flex-direction: column;
+    min-height: auto;
+  }
+
+  .trait-card.is-locked,
+  .trait-card.is-hover-open {
+    max-width: 100%;
   }
 
   .trait-header {
-    width: 100%;
-    min-width: 100%;
-    height: auto;
     padding: 1.25rem 1.35rem;
-  }
-
-  .trait-header-box {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .trait-content {
-    width: 100%;
-    height: auto;
-    display: none;
-    border-left: none;
-    border-right: none;
-    border-top: 1px solid rgba(17, 24, 39, 0.08);
-  }
-
-  .trait-card.is-locked .trait-content,
-  .trait-card.is-hover-open .trait-content {
-    display: block;
-  }
-
-  .trait-card-left .trait-chevron,
-  .trait-card-right .trait-chevron {
-    transform: rotate(90deg);
-  }
-
-  .trait-card.is-locked .trait-chevron,
-  .trait-card.is-hover-open .trait-chevron {
-    transform: rotate(-90deg);
   }
 }
