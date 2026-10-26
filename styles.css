@@ -311,29 +311,130 @@ main {
   margin-bottom: 0.35rem;
 }
 
-/* More-on-me narrative layout with alternating subsection justification */
+/* More-on-me narrative layout with alternating subsection cards */
 .traits-list {
-  margin-top: 1rem;
+  margin-top: 1.2rem;
   display: grid;
-  gap: 1.35rem;
+  gap: 1.25rem;
 }
 
-.trait-item {
+.trait-card {
+  width: 100%;
   max-width: 89%;
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.04);
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
-.trait-item:nth-child(odd) {
-  margin-right: auto; /* First block starts left */
+.trait-card:nth-child(odd) {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.trait-card:nth-child(even) {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.trait-card:hover,
+.trait-card.is-expanded {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-card-pop);
+}
+
+.trait-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.05rem 1.25rem;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
   text-align: left;
+  font: inherit;
+  color: var(--text-main);
+  transition: background-color 0.2s ease;
 }
 
-.trait-item:nth-child(even) {
-  margin-left: auto; /* Alternate to right */
-  text-align: right;
+.trait-header:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
 }
 
-.trait-item h3 {
-  margin-top: 0;
+.trait-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.35;
+  color: var(--text-main);
+}
+
+.trait-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(96, 165, 250, 0.12);
+  color: #2563eb;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, color 0.2s ease;
+}
+
+.trait-chevron {
+  display: block;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trait-card:hover .trait-chevron,
+.trait-card.is-expanded .trait-chevron {
+  transform: rotate(180deg);
+}
+
+.trait-card:hover .trait-indicator,
+.trait-card.is-expanded .trait-indicator {
+  background: rgba(96, 165, 250, 0.24);
+  color: #1d4ed8;
+}
+
+.trait-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.trait-inner {
+  overflow: hidden;
+  padding: 0 1.25rem;
+  opacity: 0;
+  transition: opacity 0.3s ease, padding 0.35s ease;
+}
+
+.trait-card:hover .trait-content,
+.trait-card.is-expanded .trait-content {
+  grid-template-rows: 1fr;
+}
+
+.trait-card:hover .trait-inner,
+.trait-card.is-expanded .trait-inner {
+  opacity: 1;
+  padding: 0.15rem 1.25rem 1.25rem;
+}
+
+.trait-inner p {
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.trait-inner p + p {
+  margin-top: 0.85rem;
 }
 
 /* Projects are displayed in a two-column grid of individual spaces */
@@ -637,6 +738,36 @@ body.theme-dark .project-card {
   border-color: rgba(148, 163, 184, 0.32);
 }
 
+body.theme-dark .trait-card {
+  background: #111827;
+  border-color: rgba(148, 163, 184, 0.32);
+}
+
+body.theme-dark .trait-card:hover,
+body.theme-dark .trait-card.is-expanded {
+  border-color: #7dd3fc;
+  box-shadow: 0 10px 28px rgba(2, 6, 23, 0.5);
+}
+
+body.theme-dark .trait-title {
+  color: #e5e7eb;
+}
+
+body.theme-dark .trait-inner p {
+  color: #94a3b8;
+}
+
+body.theme-dark .trait-indicator {
+  background: rgba(125, 211, 252, 0.16);
+  color: #7dd3fc;
+}
+
+body.theme-dark .trait-card:hover .trait-indicator,
+body.theme-dark .trait-card.is-expanded .trait-indicator {
+  background: rgba(125, 211, 252, 0.28);
+  color: #e0f2fe;
+}
+
 body.theme-dark .project-media {
   background: #0f172a;
   border-color: #475569;
@@ -773,7 +904,7 @@ body.theme-dark .to-top-button {
     min-height: 190px;
   }
 
-  .trait-item {
+  .trait-card {
     max-width: 81%;
   }
 }

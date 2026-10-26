@@ -234,3 +234,21 @@ if (contactForm) {
   });
 }
 
+/*
+  Expandable trait cards in "More On Me":
+  - Hovering expands automatically via CSS.
+  - Clicking the header toggles a pinned open state and synchronizes aria-expanded.
+*/
+const traitCards = document.querySelectorAll(".trait-card");
+
+traitCards.forEach((card) => {
+  const header = card.querySelector(".trait-header");
+  if (!header) return;
+
+  header.addEventListener("click", () => {
+    const isExpanded = card.classList.toggle("is-expanded");
+    header.setAttribute("aria-expanded", String(isExpanded));
+  });
+});
+
+
