@@ -5,11 +5,11 @@
   GLOBAL STYLE NOTES (FOR MAINTENANCE)
   ============================================
   This file controls visual presentation only.
-  If you need to change wording/content, edit index.html.
+  If you need to change wording/content, edit the files in src/components/.
 
   Quick edit guide:
-  - Change colors in :root variables
-  - Change font in body
+  - Change colors in :root variables (and .theme-dark for dark mode)
+  - Change fonts in :root variables (--font-display, --font-body)
   - Change section spacing in section selectors
 */
 
