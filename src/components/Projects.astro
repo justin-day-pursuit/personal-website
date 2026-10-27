@@ -25,31 +25,46 @@
   <div class="projects-grid">
     <!-- PROJECT CARD 1 -->
     <article class="project-card">
-      <div class="project-media" role="img" aria-label="TaskLocal Trust and Safety">
-        <p class="project-media-label">
-          <span>TaskLocal</span>
-          <span>Trust &amp; Safety</span>
-        </p>
+      <div class="project-media project-media-brand" role="img" aria-label="TaskLocal Trust and Safety">
+        <div class="tasklocal-lockup">
+          <p class="tasklocal-mark">TaskLocal</p>
+          <p class="tasklocal-name">Trust &amp; Safety</p>
+        </div>
       </div>
       <div class="project-content">
         <h3>TaskLocal Trust &amp; Safety</h3>
         <p class="project-links">
           <a
+            href="https://task-local-trust-and-safety.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Live demo</a
+          >
+          <a
             href="https://github.com/justin-day-pursuit/TaskLocal-TrustAndSafety"
             target="_blank"
             rel="noopener noreferrer"
-            >View on GitHub</a
+            >GitHub</a
           >
         </p>
         <ul>
           <li>
-            A marketplace reviewer clears reported reviews from one dashboard
-            and reads a morning briefing of what changed.
+            TaskLocal is a local-services marketplace. When a customer or
+            provider reports a review, a reviewer has to decide what needs
+            attention today, and reading every comment by hand does not scale.
           </li>
           <li>
-            Emails, phone numbers, and other identifiers are stripped before
-            Gemini sees the text, and chart numbers stay computed in the app.
-            Built with Next.js, TypeScript, Supabase, and Gemini.
+            The Trust &amp; Safety desk is that morning work surface. Three
+            cards — new reports today, unhandled reports, and the high-risk
+            case — open one shared list, and a briefing covers what changed
+            since the last report. The day resets at a 9:00 AM cutoff.
+          </li>
+          <li>
+            Emails, phone numbers, URLs, handles, and long digit strings are
+            removed before any review text reaches the model. Chart values are
+            counted in the app. Database calls stop after 10 seconds, and a
+            full analysis stops after 90 seconds. A failed run leaves the last
+            good report on screen.
           </li>
         </ul>
       </div>
@@ -81,12 +96,26 @@
         </p>
         <ul>
           <li>
-            A planner for NYC building managers facing Local Law 97. A building
-            and a budget become three clean-energy scenarios.
+            Facility directors at New York City schools, libraries, and other
+            municipal buildings face Local Law 97 carbon limits. A first-pass
+            feasibility study often takes 3 to 6 months and tens of thousands
+            of dollars before anyone knows whether solar, storage, or
+            efficiency work is viable.
           </li>
           <li>
-            Every figure is labeled fact, estimate, assumption, or
-            recommendation. Built with Next.js, FastAPI, Django, and Claude.
+            Professor Fritts is a pre-engineering advisor. From a building
+            address, a capital budget, and an energy goal, it looks up the tax
+            lot and rooftop solar potential and returns three scenarios side by
+            side: solar only, solar plus battery backup, and solar plus storage
+            plus efficiency upgrades. A full plan takes about 2 minutes.
+          </li>
+          <li>
+            The plan runs 13 sections, including cost, carbon, payback, and the
+            licensed reviews required before public money is spent. Every
+            figure is tagged as a fact, an estimate, an assumption, or a
+            recommendation. Requests outside the five boroughs, or any wording
+            that promises guaranteed savings, are turned away before a plan is
+            shown.
           </li>
         </ul>
       </div>
